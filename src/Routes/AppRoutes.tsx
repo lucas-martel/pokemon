@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-export default function AppRoutes() {
+const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<p>incial</p>} />
@@ -9,3 +9,5 @@ export default function AppRoutes() {
     </Routes>
   );
 }
+
+export default AppRoutes
