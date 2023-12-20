@@ -10,7 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import { IItens } from "../../utils/types";
+import { IItens } from "../../utils/Interfaces";
 import { useNavigate } from "react-router-dom";
 
 type prop = {
@@ -22,20 +22,21 @@ type prop = {
 
 const MenuDrawer: React.FC<prop> = (props) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
+
   return (
     <>
-      <Drawer open={props.isOpen} variant={smDown ? "temporary" : "permanent"}>
+      <Drawer open={props.isOpen} variant={mdDown ? "temporary" : "permanent"}>
         <Box
           width={theme.spacing(21)}
           display="flex"
           flexDirection="column"
           height="100%"
         >
-          {smDown && <Button onClick={props.handleCloseDrawer}>x</Button>}
+          {mdDown && <Button onClick={props.handleCloseDrawer}>x</Button>}
           <h3>Pokemon</h3>
-          <Divider />
+          <Divider variant="middle" />
           <Box flex={1}>
             <List component="nav">
               {props.menuItens.map((item, key) => (
@@ -52,7 +53,7 @@ const MenuDrawer: React.FC<prop> = (props) => {
           </Box>
         </Box>
       </Drawer>
-      <Box height={"100vh"} marginLeft={smDown ? "0" : theme.spacing(21)}>
+      <Box height={"100vh"} marginLeft={mdDown ? "0" : theme.spacing(21)}>
         {props.children}
       </Box>
     </>

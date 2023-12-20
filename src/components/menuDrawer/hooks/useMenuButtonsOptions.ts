@@ -1,4 +1,4 @@
-import { IItens } from "../../../utils/types";
+import { IItens } from "../../../utils/Interfaces";
 import { routePath } from "../../../utils/Screens";
 
 export const menuItens: IItens[] = [

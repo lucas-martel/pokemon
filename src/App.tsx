@@ -5,7 +5,7 @@ import Theme from "./utils/Theme";
 import MenuDrawer from "./components/menuDrawer";
 import useMenuDrawer from "./components/menuDrawer/hooks/useMenuDrawer";
 import { menuItens } from "./components/menuDrawer/hooks/useMenuButtonsOptions";
-import { useTheme } from "@mui/material";
+import AppBarMobile from "./components/appBarMobile";
 
 function App() {
   const {
@@ -14,13 +14,12 @@ function App() {
     handleOpenDrawer
   } = useMenuDrawer();
 
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"))
+  const mdDown = useMediaQuery(Theme.breakpoints.down("md"))
 
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
-        {(smDown && <Button onClick={handleOpenDrawer}>abrir</Button>)}
+        {(mdDown && <AppBarMobile onClickMenu={handleOpenDrawer} />)}
         <MenuDrawer isOpen={isOpen} handleCloseDrawer={handleCloseDrawer} menuItens={menuItens}>
           <AppRoutes />
         </MenuDrawer>
